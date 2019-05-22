@@ -1,5 +1,5 @@
-# ES6学习笔记
+# typescript学习笔记
 
-**es6的基础学习笔记**
+**typescript的基础学习笔记**
 
 
