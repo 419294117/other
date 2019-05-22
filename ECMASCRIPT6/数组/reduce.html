@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //reduce
+        let num = [1, 2, 3];
+        var sum = num.reduce(function (sum, number) {
+            return sum += number
+        },0)//定义初始值为0
+        console.log(sum);
+        //reduce总结：需要两个参数，第一个参数为接受结果的参数，需要在后面定义初始值.第二个参数是遍历数组的循环项
+
+        //利用reduce抽离数组的某值到新数组
+        let obj = [{
+                name: "a",
+                age: "12"
+            },
+            {
+                name: "b",
+                age: "11"
+            }
+        ]
+        var obj1 = obj.reduce(function (o,obj) {
+             o.push(obj.name); //将obj中的name属性push到obj1中
+             return o
+        },[])
+        console.log(obj1);
+    </script>
+</body>
+
+</html>

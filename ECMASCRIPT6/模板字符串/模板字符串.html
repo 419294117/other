@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="temp">
+
+    </div>
+
+    <script>
+        //模板字符串：使用``，变量和方法使用${},
+        var name = "alex";
+        function UpCass(word){
+            return word.toUpperCase();
+        }
+        var template = 
+        `
+        <h1>${UpCass('hello')},${name}</h1>
+        <p>qweqwewqewqeq</p>
+        `
+        document.getElementById("temp").innerHTML = template;
+    </script>
+</body>
+</html>

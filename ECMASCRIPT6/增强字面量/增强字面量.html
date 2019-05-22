@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //es
+        // function createBookShop(inventory){
+        //     return {
+        //         inventory:inventory,
+        //         inventoryVal:function(){
+        //             return this.inventory.reduce((total,book) => total + book.price,0 )
+        //         },
+        //         priceForTitle:function(title){
+        //             return this.inventory.find(t  => t.title === title)
+        //         }
+        //     }
+            
+        // }
+        // const inventory = [
+        //     {title:"vue",price:10},
+        //     {title:"node",price:15}
+        // ]
+        // const bookShop = createBookShop(inventory);
+        // console.log(bookShop.inventoryVal());
+        // console.log(bookShop.priceForTitle("vue"));
+
+
+        //es增强字面量：缩减代码量
+        function createBookShop(inventory){
+            return {
+                inventory, //相同的属性可以缩写成一个
+                inventoryVal(){ //可以省略function关键词
+                    return this.inventory.reduce((total,book) => total + book.price,0 )
+                },
+                priceForTitle(title){
+                    return this.inventory.find(t  => t.title === title)
+                }
+            }
+            
+        }
+        const inventory = [
+            {title:"vue",price:10},
+            {title:"node",price:15}
+        ]
+        const bookShop = createBookShop(inventory);
+        console.log(bookShop.inventoryVal());
+        console.log(bookShop.priceForTitle("vue"));
+    </script>
+</body>
+
+</html>

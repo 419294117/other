@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // map：与对象不同，键值对可以是任何类型
+    const map1 = new Map();
+
+    const key1 = "string",key2 = {},key3 = function(){};
+
+    map1.set(key1,"value of key1");
+    map1.set(key2,"value of key1");
+    map1.set(key3,"value of key1");
+
+
+    console.log(map1.get(key1));
+
+    map1.forEach((value,key) => {
+        console.log(`${key}:${value}`);
+    })
+    </script>
+</body>
+</html>

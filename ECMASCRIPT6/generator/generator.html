@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //generator生成器
+    //斐波那契数列 ES5
+    // function fn(max){
+    //     var t,a=0,b=1;
+    //     var arr = [0,1];
+    //     while(arr.length < max){
+    //         [a,b] = [b,a+b];
+    //         arr.push(b);
+    //     }
+    //     return arr;
+    // }
+
+    //斐波那契数列 ES6 generator
+    function* fn(max){
+        var a = 0,b=1,n=0;
+        while(n<max){
+            yield a;
+            [a,b] = [b,a+b];
+            n++;
+        }
+        return;
+    }
+    for(var x of fn(10)){
+        console.log(x);
+    }
+    </script>
+</body>
+</html>

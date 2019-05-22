@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let：只能在当前作用域生效，已经let定义的值无法再次使用let定义，但可以改变值
+        function test() {
+            let a = 10;
+            console.log(a);
+            if (true) {
+                let a = 20;
+                console.log(a);
+            }
+            // let a = 30; //报错，被let定义的值无法再使用let定义。
+            a = 30; //被let定义的值不用let再次定义则能该表
+            console.log(a);
+        }
+        test();
+        for(let i = 0; i < 10; i++){
+            console.log(i);
+        }
+
+
+        //const:定义的常量，可以初始赋值，但在之后不可以改变值。
+        const x = 10;
+        // x = 20; //报错
+        //定义数组不可改变类型，但可以使用数组方法添加数据
+        const arr = [];
+        arr.push = "a";
+        console.log(arr);
+    </script>
+</body>
+
+</html>
