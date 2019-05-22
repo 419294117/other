@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //filter
+        var car = [{
+                id: "1",
+                name : "a"
+            },
+            {
+                id: "2",
+                name : "b"
+            },
+            {
+                id: "1",
+                name : "a"
+            },
+            {
+                id: "2",
+                name : "b"
+            }
+        ];
+        var obj1 = car.filter(function (o) {
+            return o.name === "c";
+        })
+        console.log(obj1);
+        //filter总结：判断条件为true or false，true则返回相应的所有值，false则返回空数组
+
+        //多个条件过滤:用&&链接
+        var car = [{
+                id: "1",
+                name : "a",
+                num:"1"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"10"
+            },
+            {
+                id: "1",
+                name : "a",
+                num:"100"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"1000"
+            }
+        ];
+        var c = car.filter(function(o){
+            return o.name === "a"
+            && o.num <= 1000
+        })
+        console.log(c);
+
+        //根据A数组的ID，过滤B数组中不符合的数据
+        let post = {id:"1",name:"javascript"};
+        let lists = [{
+                id: "1",
+                name : "a",
+                num:"1"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"10"
+            },
+            {
+                id: "1",
+                name : "a",
+                num:"100"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"1000"
+            }]
+            function postFilter(post,lists){
+                return lists.filter(function(list){
+                    return list.id === post.id;
+                })
+            }
+            console.log(postFilter(post,lists));
+    </script>
+</body>
+
+</html>

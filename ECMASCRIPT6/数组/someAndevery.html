@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //every : 一假即假，只要出现一个false，那么结果都是false
+        var com = [
+            {name:"windows",ram:64},
+            {name:"apple",ram:16},
+            {name:"xp",ram:32}
+        ]
+        var com1 = com.every(function(e){
+            return e.ram >16
+        })
+        console.log(com1);
+        console.log("=================================");
+        //some:一真即真，只要有一个条件为真，那么结果都为真
+        var com2 = com.some(function(e){
+            return e.ram >16
+        })
+        console.log(com2);
+        console.log("=================================");
+
+        //实现注册页面文本框的验证
+        function filed(value){
+            this.value = value;
+        }
+        var userName = new filed("");
+        var pwd = new filed("123");
+        var tep = new filed("152");
+
+        filed.prototype.validate = function(){ 
+            return this.value.length > 0;
+        }
+
+        var list = [userName,pwd,tep];
+        var blooer = list.every(function(filed){
+            return filed.validate();
+        })
+        console.log(blooer);
+        console.log("=================================");
+        var blooer1 = list.some(function(filed){
+            return filed.validate();
+        })
+        console.log(blooer1);
+     </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //对象解构
+    let obj = {
+        name:"小明",
+        age:18
+    }
+    //es5
+    // function test(obj){
+    //     return `${obj.name}的年龄为${obj.age}`
+    // }
+    //es6解构:接受的形参与对象内的属性名必须一样，否侧不识别
+    function test({name,age}){
+        return `${name}的年龄为${age}`
+    }
+    console.log(test(obj));
+    </script>
+</body>
+</html>

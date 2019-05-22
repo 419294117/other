@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //find
+        var car = [{
+                id: "1",
+                name : "a"
+            },
+            {
+                id: "2",
+                name : "b"
+            },
+            {
+                id: "1",
+                name : "a"
+            }
+        ];
+        var obj1 = car.find(function (o) {
+            return o.name === "a";
+        })
+        console.log(obj1);
+        //find总结：find会找到数组中的第一个符合条件的数，不会再往下执行
+
+        //根据A数组的ID，找到B数组中符合的值
+        let post = {id:"1",name:"javascript"};
+        let lists = [{
+                id: "1",
+                name : "a",
+                num:"1"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"10"
+            },
+            {
+                id: "1",
+                name : "a",
+                num:"100"
+            },
+            {
+                id: "2",
+                name : "b",
+                num:"1000"
+            }]
+            function postFilter(post,lists){
+                return lists.find(function(list){
+                    return list.id === post.id;
+                })
+            }
+            console.log(postFilter(post,lists));
+    </script>
+</body>
+
+</html>
