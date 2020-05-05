@@ -1,0 +1,166 @@
+<!--
+ * @LineStart: -------------------------------------------
+ * @Copyright: © 2020, zoe. All rights reserved.
+ * @LineEnd: ----------------------------------------------
+ * @Product: 
+ * @Mode Name: 
+ * @Autor: zoe
+ * @Date: 2020-03-28 14:21:07
+ * @Version: xxx.v1.0
+ * @LastEditors: zoe
+ * @LastEditTime: 2020-04-21 11:49:26
+ * @Description: 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    #container {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+    #box {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      border: 1px solid #e8e8e8;
+      padding-top: 100px;
+    }
+  </style>
+  <body>
+    <div id="app"></div>
+    <script>
+      // 生成指定个数的随机数组
+      const generateArr = (num = 10) => {
+        let arr = [];
+        for (let i = 0; i < 60; i++) {
+          let item = Math.floor(Math.random() * (num + 1));
+          arr.push(item);
+        }
+        return arr;
+      };
+
+      // 生成指定个数的元素x轴坐标
+      const generateArrPosX = (n = 10, w = 6, m = 6) => {
+        let pos = [];
+        for (let i = 0; i < n; i++) {
+          let item = (w + m) * i;
+          pos.push(item);
+        }
+        return pos;
+      };
+
+      function bubbleSort(arr = []) {
+        let len = arr.length;
+        for (let i = 0; i < len; i++) {
+          for (let j = 0; j < len - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+              // 置换
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+          }
+        }
+        return arr;
+      }
+
+      // 归并排序
+      function mergeSortRec(arr) {
+        let len = arr.length;
+        if (len === 1) {
+          return arr;
+        }
+        let mid = Math.floor(len / 2),
+          left = arr.slice(0, mid),
+          right = arr.slice(mid, len);
+        return merge(mergeSortRec(left), mergeSortRec(right));
+      }
+      // 合并方法
+      function merge(left, right) {
+        let result = [],
+          l = 0,
+          r = 0;
+        while (l < left.length && r < right.length) {
+          if (left[l] < right[r]) {
+            result.push(left[l++]);
+          } else {
+            result.push(right[r++]);
+          }
+        }
+        while (l < left.length) {
+          result.push(left[l++]);
+        }
+        while (r < right.length) {
+          result.push(right[r++]);
+        }
+        return result;
+      }
+
+      // 快速排序
+      function quickSort(arr, left, right) {
+        let index;
+        if (arr.length > 1) {
+          index = partition(arr, left, right);
+          if (left < index - 1) {
+            quickSort(arr, left, index - 1);
+          }
+          if (index < right) {
+            quickSort(arr, index, right);
+          }
+        }
+        return arr;
+      }
+      // 划分流程
+      function partition(arr, left, right) {
+        let part = arr[(Math.floor((right + left) / 2))],
+          i = left,
+          j = right;
+        while (i <= j) {
+          while (arr[i] < part) {
+            i++;
+          }
+          while (arr[j] > part) {
+            j--;
+          }
+          if (i <= j) {
+            // 置换
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+            i++;
+            j--;
+          }
+        }
+        return i;
+      }
+
+      // 生成坐标
+      const pos = generateArrPosX(60);
+      // 生成60个项的数组
+      const arr = generateArr(60);
+      console.time("排序时间：");
+      console.log(bubbleSort(pos));
+      console.timeEnd("排序时间：");
+
+      console.time("归并排序");
+      console.log(mergeSortRec(pos));
+      console.timeEnd("归并排序");
+
+      console.time("快速排序");
+      console.log(quickSort(pos));
+      console.timeEnd("快速排序");
+    </script>
+  </body>
+</html>

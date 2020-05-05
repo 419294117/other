@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    dt {
+        float: left;
+    }
+
+    dd:empty::before {
+        content: '暂无';
+        color: gray;
+    }
+</style>
+
+<body>
+    <!-- <input type="text" id="ipt">
+    <dl>
+        <dt>姓名：</dt>
+        <dd>张三</dd>
+        <dt>性别：</dt>
+        <dd></dd>
+        <dt>手机：</dt>
+        <dd></dd>
+        <dt>邮箱：</dt>
+        <dd></dd>
+    </dl> -->
+    <script>
+        // window.onload = function () {
+        //     console.log(window.performance.now())
+        //     let last = new Date().getTime();
+
+        //     function ajax(content) {
+        //         const d = new Date().getTime();
+        //         const span = d - last;
+        //         console.log(`${content}间隔${span}`);
+        //         last = d;
+        //     }
+
+        //     function debounce(fn, delay) {
+        //         let timer = null;
+        //         return function () {
+        //             timer && clearTimeout(timer);
+        //             timer = setTimeout(() => fn.apply(this, arguments), delay);
+        //         }
+        //     }
+
+        //     const ipt = document.getElementById('ipt');
+
+        //     let debounceAjax = debounce(ajax, 500);
+
+        //     ipt.addEventListener("keyup", function (e) {
+        //         debounceAjax(e.target.value)
+        //     })
+        // }
+
+        // function sendRequest(urls, max, callback) {
+        //     let last = performance.now();
+        //     let len = urls.length;
+        //     let limit = max; // 控制并发数
+        //     let cnt = 0; // 累积执行任务数
+        //     let res = []; // 有序存储执行结果
+        //     const tasks = urls.map((url, index) => () => fetch(url)
+        //         .then(data => {
+        //             res[index] = data;
+        //         })
+        //         .catch(reason => {
+        //             res[index] = reason;
+        //         })
+        //         .finally(() => {
+        //             if (++cnt === len) return callback(res);
+        //             ++limit;
+        //             doTasks();
+        //         }));
+
+        //     doTasks();
+
+        //     function doTasks() {
+        //         while (limit && tasks.length) {
+        //             --limit;
+        //             let task = tasks.shift();
+        //             task();
+        //             console.log(`执行间隔：${performance.now() - last}`);
+        //         }
+        //     }
+        // }
+
+        // 模拟 fetch
+        // function fetch(url) {
+        //     return new Promise(function (resolve, reject) {
+        //         let good, bad;
+        //         const time = 3000;
+
+        //         good = setTimeout(function () {
+        //             clearTimeout(bad);
+        //             let data = `resolve: ${url}`;
+        //             resolve(data);
+        //             console.log(data);
+        //         }, Math.random() * time);
+
+        //         bad = setTimeout(function () {
+        //             clearTimeout(good);
+        //             let reason = `reject: ${url}`;
+        //             reject(reason);
+        //             console.log(reason);
+        //         }, Math.random() * time);
+        //     });
+        // }
+
+        // 测试
+        // sendRequest([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, (res) => console.log('all done：' + res));
+
+        console.log(Object.assign(2))
+    </script>
+</body>
+
+</html>
