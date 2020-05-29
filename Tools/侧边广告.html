@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>侧边广告</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #head {
+        width: 100%;
+        height: 100px;
+        background: #000;
+      }
+      #nav {
+        width: 100%;
+        height: 50px;
+        background: #333;
+      }
+      #info {
+        width: 100%;
+        height: 5000px;
+      }
+
+      .xi {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+
+      #ad {
+        position: absolute;
+        width: 150px;
+        height: 300px;
+        right: 30px;
+        top: 300px;
+        background: yellow;
+      }
+
+      #scrollTo {
+        position: fixed;
+        right: 20px;
+        bottom: 80px;
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div id="head">头部</div>
+    </header>
+    <nav>
+      <div id="nav">导航</div>
+    </nav>
+    <section>
+      <div id="info">
+        <div id="ad"></div>
+
+        <div id="scrollTo">
+          ⬆
+        </div>
+      </div>
+    </section>
+    <script>
+      window.onload = function () {
+        var nav_top = document.getElementById('nav').offsetTop;
+        var ad_top = document.getElementById('ad').offsetTop;
+        console.log(ad_top);
+        var begin = 0,
+          end = 0,
+          timer = null;
+        window.onscroll = function () {
+          clearInterval(timer);
+          var scroll_top = window.pageYOffset;
+
+          if (scroll_top > nav_top) {
+            document.getElementById('nav').className = 'xi';
+          } else {
+            document.getElementById('nav').className = '';
+          }
+
+          end = scroll_top + ad_top;
+          timer = setInterval(() => {
+            begin = begin + (end - begin) * 0.1;
+            document.getElementById('ad').style.top = begin + 'px';
+            if (Math.round(begin) === end) {
+              clearInterval(timer);
+            }
+          }, 20);
+
+          scroll_top > 0
+            ? (document.getElementById('scrollTo').style.display = 'block')
+            : (document.getElementById('scrollTo').style.display = 'none');
+        };
+
+        document
+          .getElementById('scrollTo')
+          .addEventListener('click', function () {
+            clearInterval(timer);
+
+            var begin = 0,
+              end = 0;
+            timer = null;
+
+            timer = setInterval(() => {
+              begin = begin + (end - begin) / 20;
+              window.scrollTo(0, begin);
+
+              if (parseInt(begin) === end) {
+                clearInterval(timer);
+              }
+            }, 20);
+          });
+      };
+    </script>
+  </body>
+</html>

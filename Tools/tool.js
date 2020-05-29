@@ -82,8 +82,8 @@ function deepClone(obj) {
   // 过滤一些特殊情况
   if (Object.is(obj, null)) return null;
   if (Object.is(obj, undefined)) return undefined;
-  if (Object.is(obj, "")) return "";
-  if (typeof obj !== "object") return obj;
+  if (Object.is(obj, '')) return '';
+  if (typeof obj !== 'object') return obj;
   if (obj instanceof RegExp) return new RegExp(obj);
   if (obj instanceof Date) return new Date(obj);
   let newObj = new obj.constructor(); // 不直接创建空对象的目的：克隆的结果和之前保持所属类  =》 即能克隆普通对象，又能克隆某个实例对象
@@ -126,7 +126,7 @@ function curry(fn, args) {
 function arrayDup(array) {
   let newArray = [];
   array.forEach((item) => {
-    if (newArray.indexOf(item) == "-1") {
+    if (newArray.indexOf(item) == '-1') {
       newArray.push(item);
     }
   });
@@ -141,7 +141,7 @@ function arrayDup(array) {
  */
 
 function objectDup(arr, key) {
-  if (typeof key != "string") return;
+  if (typeof key != 'string') return;
   return [...new Map(arr.map((item) => [item[key], item])).values()];
 }
 
@@ -166,10 +166,10 @@ class HttpUtils {
   static post(url, data) {
     return new Promise((resolve, reject) => {
       fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(data),
       })

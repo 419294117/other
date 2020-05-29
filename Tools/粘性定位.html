@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0px;
+        padding: 100px;
+        height: 2000px;
+      }
+
+      h4 {
+        margin: 2em 0 0;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        top: 0;
+        z-index: 1;
+        position: sticky;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 父级元素不能有任何 overflow:visible 以外的 overflow
+    设置，否则没有粘滞效果。如果你设置的 sticky
+    没有效果，可以看看父级元素们有没有设置 overflow:hidden，去掉就可以了。
+    必须指定 top、bottom、left、right 4 个值之一，否则只会处于相对定位。
+    父元素的高度不能低于 sticky 元素的高度（参考上面原理解释） sticky
+    元素仅在其父元素内生效（参考上面原理解释） -->
+    <section>
+      <h4>5月20日</h4>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </section>
+    <section>
+      <h4>5月19日</h4>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Father() {
+        this.FatherValue = 'father';
+      }
+
+      Father.prototype.getFatherValue = function () {
+        return this.FatherValue;
+      };
+
+      function Son() {
+        this.SonValue = 'son';
+      }
+
+      Son.prototype = new Father();
+      Son.prototype.getSonValue = function () {
+        return this.SonValue;
+      };
+
+      var i = new Son();
+      console.log(i.getFatherValue());
+
+      console.log(i instanceof Object);
+      console.log(i instanceof Father);
+      console.log(i instanceof Son);
+
+      console.log(new Son().__proto__.__proto__.__proto__);
+    </script>
+  </body>
+</html>

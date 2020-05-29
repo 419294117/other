@@ -1,0 +1,66 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-05-11 15:39:55
+ * @LastEditTime: 2020-05-26 09:33:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \ag-crm-adming:\other\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <title>Document</title>
+    <style>
+      nav {
+        display: flex;
+        position: sticky;
+        top: 0px;
+        width: 100%;
+      }
+      article {
+        height: 1000px;
+        width: 100%;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="search" />
+    <div id="app">
+      <nav>
+        <h3>导航</h3>
+        <h3>导航</h3>
+        <h3>导航</h3>
+      </nav>
+      <article>
+        <p>的年纪阿松返回的似乎发生大洪水发生的</p>
+      </article>
+    </div>
+    <script>
+      $('#search').on('input propertychange', debounce(fun, 1000, false));
+      function fun() {
+        console.log('object');
+      }
+      function debounce(fn, delay = 1000, immediate) {
+        let timer = null;
+        return (...arguments) => {
+          timer && clearTimeout(timer);
+          if (immediate) {
+            let callNow = !timer;
+            timer = setTimeout(() => {
+              timer = null;
+            }, delay);
+            if (callNow) fn.apply(this, arguments);
+          } else {
+            timer = setTimeout(() => {
+              fn.apply(this, arguments);
+            }, delay);
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
