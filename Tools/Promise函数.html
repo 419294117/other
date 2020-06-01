@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 三种状态
+      const PENDING = 'pending';
+      const RESOLVE = 'resolve';
+      const REJECT = 'reject';
+
+      // promise 函数
+      function MyPromise(fn) {
+        const that = this; // 回调时用于保存正确的 this 对象
+        that.state = PENDING; // 初始化状态
+        that.value = null; // value 用于保存回调函数(resolve/reject 传递的参数值)
+        that.resolvedCallbacks = []; // 用于保存 then 中的回调
+        that.rejectedCallbacks = [];
+
+        // resolve 和 reject 函数
+        function resolve(value) {
+          if (that.state === PENDING) {
+            that.state = 'resolve';
+            that.value = value;
+            that.resolvedCallbacks.map((cb) => cb(that.value));
+          }
+        }
+
+        function reject(value) {
+          if (that.state === PENDING) {
+            that.state = 'reject';
+            that.value = value;
+            that.rejectedCallbacks.map((cb) => cb(that.value));
+          }
+        }
+
+        // 实现如何执行 Promise 中传入的函数
+        try {
+          fn(resolve, reject);
+        } catch (e) {
+          reject(e);
+        }
+      }
+
+      // 实现 then 函数
+      MyPromise.prototype.then = function (onResolved, onRejected) {
+        const that = this;
+        // 判断两个参数是否为函数类型(如果不是函数，就创建一个函数赋值给对应的参数)
+        onResolved = typeof onResolved === 'function' ? onResolved : (v) => v;
+        onRejected =
+          typeof onRejected === 'function'
+            ? onRejected
+            : (r) => {
+                throw r;
+              };
+
+        // 判断当前的状态
+        if (that.state === 'pending') {
+          that.resolvedCallbacks.push(onResolved);
+          that.rejectedCallbacks.push(onRejected);
+        }
+        if (that.state === 'resolve') {
+          onResolved(that.value);
+        }
+        if (that.state === 'reject') {
+          onRejected(that.value);
+        }
+      };
+
+      new MyPromise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(1);
+        }, 0);
+      }).then((value) => {
+        console.log(value);
+      });
+    </script>
+  </body>
+</html>

@@ -40,27 +40,16 @@
       </article>
     </div>
     <script>
-      $('#search').on('input propertychange', debounce(fun, 1000, false));
-      function fun() {
-        console.log('object');
-      }
-      function debounce(fn, delay = 1000, immediate) {
-        let timer = null;
-        return (...arguments) => {
-          timer && clearTimeout(timer);
-          if (immediate) {
-            let callNow = !timer;
-            timer = setTimeout(() => {
-              timer = null;
-            }, delay);
-            if (callNow) fn.apply(this, arguments);
-          } else {
-            timer = setTimeout(() => {
-              fn.apply(this, arguments);
-            }, delay);
-          }
-        };
-      }
+      $(function () {
+        let nav = document.getElementsByTagName('h3');
+        for (var i = 0; i < nav.length; i++) {
+          (function (j) {
+            nav[j].onclick = function () {
+              console.log(j);
+            };
+          })(i);
+        }
+      });
     </script>
   </body>
 </html>
