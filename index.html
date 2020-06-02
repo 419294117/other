@@ -35,9 +35,10 @@
         <h3>导航</h3>
         <h3>导航</h3>
       </nav>
-      <article>
+      <article id="art">
         <p>的年纪阿松返回的似乎发生大洪水发生的</p>
       </article>
+      <button id="btn">123</button>
     </div>
     <script>
       $(function () {
@@ -48,6 +49,32 @@
               console.log(j);
             };
           })(i);
+        }
+        $('#art').on('click', function () {
+          w();
+          // consowle.log("object")
+        });
+        const w = debounce(clg, 1000, true);
+        function debounce(fn, delay, immediate) {
+          let timer = null;
+          return (...arguments) => {
+            timer && clearTimeout(timer);
+            if (immediate) {
+              let callNow = !timer;
+              timer = setTimeout(() => {
+                timer = null;
+              }, delay);
+              if (callNow) fn.apply(this, arguments);
+            } else {
+              timer = setTimeout(() => {
+                fn.apply(this, arguments);
+              }, delay);
+            }
+          };
+        }
+
+        function clg() {
+          console.log('object');
         }
       });
     </script>

@@ -124,47 +124,102 @@
 //   }
 // }
 
-// const acdc = new Acdc();
+// const acdc = new Acd
 
-function throttle(fn, wait, type) {
-  let preious, timer;
-  switch (type) {
-    case 1:
-      preious = 0;
-      break;
-    case 2:
-      timer = null;
-      break;
+// var cuttingRope = function (number) {
+//   if (number === 2 || number === 3) return number - 1;
+//   let a = number % 3;
+//   let b = parseInt(number / 3);
+//   if (a === 0) {
+//     return 3 ** b;
+//   } else if (a === 1) {
+//     return 2 * 2 * 3 ** (b - 1);
+//   } else {
+//     return 2 * 3 ** b;
+//   }
+// };
+
+// console.log(cuttingRope(10))
+
+// Function.prototype.mbind = function (thisArg, ...args) {
+//   var self = this;
+//   var fbound = function () {
+//     self.apply(this instanceof self) ? this : thisArg,
+//       args.concat(Array.prototype.slice.call(arguments));
+//   };
+//   fbound.prototype = Object.create(self.prototype);
+
+//   return fbound;
+// };
+
+// function debounce(fn, wait, immedite) {
+//   let timer = null;
+//   return () => {
+//     timer && clearTimeout(timer);
+//     if (immedite) {
+//       let callNow = !timer;
+//       timer = setTimeout(() => {
+//         timer = null;
+//       }, wait);
+
+//       if (callNow) fn.apply(this, arguments);
+//     } else {
+//       timer = setTimeout(() => {
+//         fn.apply(this, arguments);
+//       }, wait);
+//     }
+//   };
+// }
+
+// function throttle(fn, wait, type) {
+//   let preious, timer;
+//   switch (type) {
+//     case 1:
+//       preious = 0;
+//       break;
+//     case 2:
+//       timer = null;
+//       break;
+//   }
+//   return () => {
+//     if (type === 1) {
+//       let now = Date.now();
+//       if (now - preious > wait) {
+//         fn.apply(this, arguments);
+//         preious = now;
+//       }
+//     }
+//     if (type === 2) {
+//       if (!timer) {
+//         timer = setTimeout(() => {
+//           fn.apply(this, arguments);
+//           timer = null;
+//         }, wait);
+//       }
+//     }
+//   };
+// }
+// const arr = [1, 2, [3, [4, [5]]]];
+// console.log(arr.flat(Infinity));
+
+// function create(foo, ...args) {
+//   let obj = Object.create(foo.prototype);
+//   let result = foo.apply(obj, args);
+//   return Object.prototype.toString.call(result) === '[object Object]'
+//     ? result
+//     : obj;
+// }
+
+function fn() {
+  var a = 1;
+  return function fn1() {
+    return function fn2() {
+      var a = 2;
+      return a;
+    }
   }
-
-  return () => {
-    if (type === 1) {
-      let now = Date.now();
-      if (now - preious > wait) {
-        fn.apply(this, arguments);
-        preious = now;
-      }
-    }
-    if (type === 2) {
-      if (!timer) {
-        setTimeout(() => {
-          fn.apply(this, arguments);
-          timer = null;
-        }, wait);
-      }
-    }
-  };
 }
 
-function debounce(fn, delay = 1000, immediate) {
-  let timer = null;
-  return (...args) => {
-    timer && clearTimeout(timer);
-    if (immediate) {
-      let callNow = !timer;
-      timer = setTimeout(() => {
-        timer = null;
-      }, delay);
-    }
-  };
-}
+var f1 = fn();
+var f2 = f1();
+console.log(f2())
