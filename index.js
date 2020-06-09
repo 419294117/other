@@ -210,16 +210,69 @@
 //     : obj;
 // }
 
-function fn() {
-  var a = 1;
-  return function fn1() {
-    return function fn2() {
-      var a = 2;
-      return a;
-    }
-  }
-}
+// let obj = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+// };
 
-var f1 = fn();
-var f2 = f1();
-console.log(f2())
+// const arr = [
+//   {
+//     id:1,
+//     name: "jojo"
+//   }
+// ]
+
+// function ForIn(obj, callBack) {
+//   Object.entries(obj).forEach((item) => {
+//     callBack(...item);
+//   });
+// }
+
+// ForIn(obj, (key, value) => {
+//   console.log(key, value);
+// });
+
+// for (const [key, value] of Object.entries(obj)) {
+//   if (value > 1) {
+//     break;
+//   }
+//   console.log(key, value);
+// }
+
+// for (const item of arr) {
+//   console.log(item)
+// }
+
+// let a = {
+//   n: 1,
+// };
+
+// let b = a;
+// a.x = a = {
+//   n: 2,
+// };
+// console.log(a)
+// console.log(a.x);
+// console.log(b); // { n: 1, x: { n: 2 } }
+// var str = 'abc123';
+// var num = parseInt(str);
+// if (num == NaN) {
+//   console.log(NaN);
+// } else if (typeof num == 'number') {
+//   console.log('object');
+// }
+
+// let a = '10';
+// switch (a) {
+//   case 10:
+//     a++;
+//     break;
+//   default:
+//     a--;
+//     break;
+// }
+// console.log(a)
+import { Fn } from 'demo.js';
+
+console.log(new Fn());

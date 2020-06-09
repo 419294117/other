@@ -13,3 +13,7 @@
 //     this._wrapped = obj;
 //   };
 // })();
+
+export function Fn(name) {
+  this.name = name;
+}
